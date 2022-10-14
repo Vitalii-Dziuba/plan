@@ -29,7 +29,52 @@ document.addEventListener('DOMContentLoaded', function(){
 		{ position: {y: 0, x: 0}, identificator: '1', room: 'pantry'},
 		{ position: {y: 85, x: 30}, identificator: '2', room: 'pantry'},
 		{ position: {y: 70, x: 145}, identificator: '3', room: 'pantry'},
+		{ position: {y: 85, x: 105}, identificator: '1', room: 'wash'},
+		{ position: {y: 30, x: 0}, identificator: '2', room: 'wash'},
+		{ position: {y: 85, x: 40}, identificator: '3', room: 'wash'},
+		{ position: {y: 135, x: 225}, identificator: '1', room: 'master'},
+		{ position: {y: 35, x: 225}, identificator: '2', room: 'master'},
+		{ position: {y: 0, x: 80}, identificator: '3', room: 'master'},
+		{ position: {y: 0, x: 0}, identificator: '4', room: 'master'},
+		{ position: {y: 135, x: 0}, identificator: '5', room: 'master'},
+		{ position: {y: 50, x: 0}, identificator: '1', room: 'shower'},
+		{ position: {y: 85, x: 105}, identificator: '2', room: 'shower'},
+		{ position: {y: 0, x: 105}, identificator: '3', room: 'shower'},
+		{ position: {y: 0, x: 20}, identificator: '4', room: 'shower'},
+		{ position: {y: 85, x: 85}, identificator: '1', room: 'wardrobe'},
+		{ position: {y: 0, x: 0}, identificator: '2', room: 'wardrobe'},
+		{ position: {y: 0, x: 105}, identificator: '3', room: 'wardrobe'},
+		{ position: {y: 135, x: 20}, identificator: '1', room: 'badroom'},
+		{ position: {y: 135, x: 160}, identificator: '2', room: 'badroom'},
+		{ position: {y: 70, x: 225}, identificator: '3', room: 'badroom'},
+		{ position: {y: 0, x: 100}, identificator: '4', room: 'badroom'},
+		{ position: {y: 65, x: 0}, identificator: '5', room: 'badroom'},
+		{ position: {y: 60, x: 225}, identificator: '1', room: 'room'},
+		{ position: {y: 0, x: 0}, identificator: '2', room: 'room'},
+		{ position: {y: 110, x: 0}, identificator: '3', room: 'room'},
+		{ position: {y: 20, x: 225}, identificator: '4', room: 'room'},
+		{ position: {y: 135, x: 205}, identificator: '5', room: 'room'},
+		{ position: {y: 85, x: 105}, identificator: '1', room: 'bethroom'},
+		{ position: {y: 85, x: 20}, identificator: '2', room: 'bethroom'},
+		{ position: {y: 50, x: 145}, identificator: '3', room: 'bethroom'},
+		{ position: {y: 0, x: 70}, identificator: '4', room: 'bethroom'},
+		{ position: {y: 50, x: 75}, identificator: '1', room: 'mudroom'},
+		{ position: {y: 85, x: 0}, identificator: '2', room: 'mudroom'},
+		{ position: {y: 85, x: 125}, identificator: '3', room: 'mudroom'},
+		{ position: {y: 20, x: 145}, identificator: '4', room: 'mudroom'},
+		{ position: {y: 285, x: 25}, identificator: '1', room: 'coridor'},
+		{ position: {y: 335, x: 115}, identificator: '2', room: 'coridor'},
+		{ position: {y: 250, x: 135}, identificator: '3', room: 'coridor'},
+		{ position: {y: 170, x: 160}, identificator: '4', room: 'coridor'},
+		{ position: {y: 0, x: 190}, identificator: '5', room: 'coridor'},
+		{ position: {y: 200, x: 225}, identificator: '6', room: 'coridor'},
+		{ position: {y: 300, x: 225}, identificator: '7', room: 'coridor'},
+		{ position: {y: 400, x: 225}, identificator: '8', room: 'coridor'},
+		{ position: {y: 380, x: 160}, identificator: '9', room: 'coridor'},
 	];
+	
+	var image = document.getElementById('homeImage');
+	var loader = document.getElementById('imgLoader');
 
 	photosOnHouse.forEach(function(photo) {
 		var room = document.getElementsByClassName(photo.room)[0];
@@ -39,10 +84,16 @@ document.addEventListener('DOMContentLoaded', function(){
 		point.setAttribute('style', `top: ${photo.position.y}px; left: ${photo.position.x}px`);
 		point.dataset.nameImg = 'electricion/' + photo.room + '_' + photo.identificator + '.jpg';
 		point.onclick = function () {
-			var image = document.getElementById('homeImage');
 			image.setAttribute('src', this.dataset.nameImg);
+			image.setAttribute('style', 'display: none');
+			loader.setAttribute('style', 'display: block');
 		};
-		room.append(point)
-
+		room.append(point);
 	});
+
+	image.onload = function() {
+		loader.setAttribute('style', 'display: none');
+		image.setAttribute('style', 'display: block');
+	};
+
 });

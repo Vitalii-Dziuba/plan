@@ -26,6 +26,7 @@ time, mark, audio, video {
 
 .image-wrapper {
 	width: 40%;
+	position: relative;
 }
 
 .image-wrapper img {
@@ -37,7 +38,7 @@ time, mark, audio, video {
 .point {
 	width: 15px;
 	height: 15px;
-	transform: scale(1);
+	transform: scale(0);
 	border-radius: 50%;
 	background: rgb(0,0,0);
 	background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(233,255,9,1) 0%, rgba(0,212,255,1) 100%);
@@ -58,13 +59,19 @@ time, mark, audio, video {
   75% { transform: scale(0.95, 1.05); }
 }
 
+.outside {
+	width: 60%;
+	padding: 40px;
+	background: #46c346;
+	display: flex;
+}
 
 .house {
-	width: 60%;
 	display: grid;
 	grid-template-columns: repeat(18, 40px);
     grid-template-rows: repeat(15, 50px);
-    margin: 40px;
+    margin: auto;
+	position: relative;
 }
 
 .house > div {
@@ -93,15 +100,16 @@ time, mark, audio, video {
     grid-row: 1 / 13;
 }
 
-.living:after {
+.house:after {
 	content: '';
 	position: absolute;
 	z-index: 1;
 	left: 0;
 	top: 0;
-	background: #fff;
+	background: #46c346;
 	width: 80px;
 	height: 100px;
+	filter: grayscale(0);
 }
 
 .pantry {
@@ -152,7 +160,7 @@ time, mark, audio, video {
     grid-row: 6/9;
 }
 
-.badroom-2 {
+.room {
 	background: skyblue;
 	grid-column: 13/19;
     grid-row: 9/12;
@@ -181,4 +189,11 @@ time, mark, audio, video {
 	background: burlywood;
     grid-column: 3 / 11;
     grid-row: 12 / 15;
+}
+
+.loader {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
 }
