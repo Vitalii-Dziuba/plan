@@ -72,7 +72,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		{ position: {y: 400, x: 225}, identificator: '8', room: 'coridor'},
 		{ position: {y: 380, x: 160}, identificator: '9', room: 'coridor'},
 	];
-	
+
+	var rooms = photosOnHouse
+		.filter((item, index, self) => self.findIndex(itemm => item.room == itemm.room) === index)
+		.map(item => item.room);
 	var image = document.getElementById('homeImage');
 	var loader = document.getElementById('imgLoader');
 
@@ -89,6 +92,14 @@ document.addEventListener('DOMContentLoaded', function(){
 			loader.setAttribute('style', 'display: block');
 		};
 		room.append(point);
+	});
+
+	rooms.forEach(name => {
+		var room = document.getElementsByClassName(name)[0];
+		room.addEventListener('click', function() {
+			rooms.forEach(name => document.getElementsByClassName(name)[0].classList.remove('showPoint'));
+			this.classList.add('showPoint');
+		});
 	});
 
 	image.onload = function() {

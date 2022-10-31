@@ -19,19 +19,35 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+* {
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+}
+
 .wrapper {
 	display: flex;
 	width: 100%;
+	height: 100%;
 }
 
 .image-wrapper {
 	width: 40%;
-	position: relative;
+	position: relative;    
+	display: flex;
+    padding: 10px;
+    background: #565354;
+	align-items: center;
+	justify-content: center;
 }
 
 .image-wrapper img {
 	display: block;
-	width: 100%;
+	max-width: 100%;
+	width: auto;
+	max-height: 100%;
 	height: auto;
 }
 
@@ -61,15 +77,15 @@ time, mark, audio, video {
 
 .outside {
 	width: 60%;
-	padding: 40px;
-	background: #46c346;
+	padding: 10px;
+	background: #468b46;
 	display: flex;
 }
 
 .house {
 	display: grid;
 	grid-template-columns: repeat(18, 40px);
-    grid-template-rows: repeat(15, 50px);
+    grid-template-rows: repeat(14, 50px);
     margin: auto;
 	position: relative;
 }
@@ -85,6 +101,11 @@ time, mark, audio, video {
 }
 
 .house > div:hover .point {
+	animation: grow .5s linear;
+	transform: scale(1);
+}
+
+.showPoint .point {
 	animation: grow .5s linear;
 	transform: scale(1);
 }
@@ -106,7 +127,7 @@ time, mark, audio, video {
 	z-index: 1;
 	left: 0;
 	top: 0;
-	background: #46c346;
+	background: #468b46;
 	width: 80px;
 	height: 100px;
 	filter: grayscale(0);
@@ -193,7 +214,84 @@ time, mark, audio, video {
 
 .loader {
 	display: none;
-	position: absolute;
-	top: 50%;
-	left: 50%;
+	margin: auto;
 }
+
+.lds-heart {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	transform: rotate(45deg);
+	transform-origin: 40px 40px;
+  }
+  .lds-heart div {
+	top: 32px;
+	left: 32px;
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	background: red;
+	animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .lds-heart div:after,
+  .lds-heart div:before {
+	content: " ";
+	position: absolute;
+	display: block;
+	width: 32px;
+	height: 32px;
+	background: red;
+  }
+  .lds-heart div:before {
+	left: -24px;
+	border-radius: 50% 0 0 50%;
+  }
+  .lds-heart div:after {
+	top: -24px;
+	border-radius: 50% 50% 0 0;
+  }
+  @keyframes lds-heart {
+	0% {
+	  transform: scale(0.95);
+	}
+	5% {
+	  transform: scale(1.1);
+	}
+	39% {
+	  transform: scale(0.85);
+	}
+	45% {
+	  transform: scale(1);
+	}
+	60% {
+	  transform: scale(0.95);
+	}
+	100% {
+	  transform: scale(0.9);
+	}
+  }
+  
+
+  @media (max-width: 1100px) {
+	.wrapper {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.outside {
+		width: 100%;
+	}
+
+	.image-wrapper {
+		width: 100%;
+		height: 800px
+	}
+	
+	.image-wrapper img {
+		display: block;
+		width: auto;
+		height: 100%;
+	}
+
+  }
