@@ -303,13 +303,17 @@ body, html {
   }
 
   @media (max-width: 700px) {
-	.house {
-		grid-template-columns: repeat(18, 20px);
-		grid-template-rows: repeat(14, 25px);
-	}
+		.house {
+			grid-template-columns: repeat(18, 20px);
+			grid-template-rows: repeat(14, 25px);
+		}
 
-	.house:after {
-		width: 40px;
-		height: 50px;
-	}
+		.house:after {
+			width: 40px;
+			height: 50px;
+		}
+		.point {
+			width: 7.5px;
+			height: 7.5px;
+		}
   }
